@@ -12,6 +12,7 @@ class Registo : AppCompatActivity() {
 
         // Configura um listener para o texto "Já tem uma conta? Faça o login"
         val fazerLoginTextView: TextView = findViewById(R.id.conta)
+
         fazerLoginTextView.setOnClickListener {
             // Inicia a atividade de login
             val intent = Intent(this, Login::class.java)
