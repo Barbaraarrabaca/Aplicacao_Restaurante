@@ -19,4 +19,9 @@
     <string name="tem_conta">Já tem uma conta?</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="nome_politecnico">Instituto Politécnico de Tomar</string>
+    <string name="nome_curso">Engenharia Informática</string>
+    <string name="nome_disciplina">Desenvolvimento de Aplicações Móveis</string>
+    <string name="ano_letivo">2023/2024</string>
+    <string name="nome_numero">Bárbara Barbosa nº19493</string>
 </resources>

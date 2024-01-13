@@ -15,23 +15,27 @@
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:icon="@android:drawable/btn_plus"/>
+            android:icon="@drawable/baseline_person_perfil"
+            android:text="Perfil" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:icon="@android:drawable/btn_star_big_on"/>
+            android:icon="@drawable/baseline_ementa"
+            android:text="Ementa" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:icon="@android:drawable/checkbox_on_background"/>
+            android:icon="@drawable/baseline_pedidos"
+            android:text="Pedidos" />
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/tabItem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:icon="@android:drawable/checkbox_on_background"/>
+            android:icon="@drawable/baseline_localizacao"
+            android:text="localizacao" />
     </com.google.android.material.tabs.TabLayout>
 
     <androidx.viewpager2.widget.ViewPager2
