@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragmentos.fragmento_3">
+    tools:context=".fragmentos.FragmentoLocalizacao">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Fragmento 3"
+        android:text="Fragmento 4"
         android:textSize="32dp"
         android:layout_centerInParent="true"/>
 
