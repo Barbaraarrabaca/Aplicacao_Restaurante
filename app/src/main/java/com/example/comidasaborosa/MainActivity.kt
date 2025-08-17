@@ -1,48 +1,58 @@
 package com.example.comidasaborosa
 
-import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
+import com.example.comidasaborosa.util.UserPreferences
 import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 
+// Classe principal que define a atividade inicial
 class MainActivity : AppCompatActivity() {
 
-    lateinit var tabLayout: TabLayout
-    lateinit var viewPager2: ViewPager2
-    lateinit var myViewPagerAdapter: MyViewPagerAdapter
-    @SuppressLint("MissingInflatedId")
+    // Método chamado durante a criação da atividade
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Define o layout XML associado a esta atividade
         setContentView(R.layout.activity_main)
 
-        tabLayout = findViewById(R.id.tab_layout)
-        viewPager2 = findViewById(R.id.view_pager2)
+        // Inicializa as preferências do utilizador com o contexto da aplicação
+        UserPreferences.init(applicationContext)
+        // Obtém referências aos elementos de UI do layout
+        val tabLayout: TabLayout = findViewById(R.id.tab_layout)
+        val viewPager2: ViewPager2 = findViewById(R.id.view_pager2)
 
-        myViewPagerAdapter = MyViewPagerAdapter(this)
-        viewPager2.adapter = myViewPagerAdapter
-
-        tabLayout.addOnTabSelectedListener(object :
-            TabLayout.OnTabSelectedListener {
-            override fun onTabSelected(tab: TabLayout.Tab?) {
-                viewPager2.currentItem = tab!!.position
+        // Configura o ViewPager2 para manter 3 páginas adjacentes em memória
+        viewPager2.offscreenPageLimit = 3
+        // Define o adaptador responsável pela gestão dos fragments
+        viewPager2.adapter = ViewPagerAdapter(this)
+        // Sincroniza o TabLayout com o ViewPager2 e configura cada aba
+        TabLayoutMediator(tabLayout, viewPager2) { tab, position ->
+            when(position) {
+                0 -> { // Primeira aba
+                    tab.text = "Perfil"
+                    tab.setIcon(R.drawable.baseline_person_perfil)
+                }
+                1 -> {  // Segunda aba
+                    tab.text = "Menu"
+                    tab.setIcon(R.drawable.baseline_ementa)
+                }
+                2 -> {  // Terceira aba
+                    tab.text = "Carro"
+                    tab.setIcon(R.drawable.baseline_pedidos)
+                }
+                3 -> { // Quarta aba
+                    tab.text = "Localização"
+                    tab.setIcon(R.drawable.baseline_localizacao)
+                }
             }
-
-            override fun onTabUnselected(tab: TabLayout.Tab?) {     }
-            override fun onTabReselected(tab: TabLayout.Tab?) {     }
-
-        })
+        }.attach() // Aplica a ligação entre os componentes
 
 
-        viewPager2.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                super.onPageSelected(position)
-                tabLayout.getTabAt(position)?.select()
-            }
-        })
-
+        // Verifica se o utilizador está autenticado
+        if (UserPreferences.isLoggedIn()) {
+            // Carrega o carrinho de compras 
+            CarrinhoManager.carregarCarrinho { }
+        }
     }
 }
-
-
-
