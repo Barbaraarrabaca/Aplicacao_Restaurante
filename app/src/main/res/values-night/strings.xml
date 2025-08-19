@@ -22,4 +22,18 @@
     <string name="nome_disciplina">Desenvolvimento de Aplicações Móveis</string>
     <string name="ano_letivo">2023/2024</string>
     <string name="nome_numero">Bárbara Barbosa nº19493</string>
+    <string name="perfil">Perfil</string>
+    <string name="menu">Menu</string>
+    <string name="carro">Carro</string>
+    <string name="localizacao">Localizacao</string>
+    <string name="carrinho_vazio">Carrinho vazio</string>
+    <string name="total_0_00">Total: €0,00</string>
+    <string name="finalizar_compra">Finalizar Compra</string>
+    <string name="menu1">Menu</string>
+    <string name="quantidade_1">Quantidade: 1</string>
+    <string name="sinal_menos">-</string>
+    <string name="_1">1</string>
+    <string name="sinal_mais">+</string>
+    <string name="remover">Remover</string>
+    <string name="adicionar">Adicionar</string>
 </resources>

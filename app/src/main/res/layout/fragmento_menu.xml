@@ -10,17 +10,17 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:gravity="center"
-        android:text="Menu"
+        android:text="@string/menu1"
         android:textColor="@color/purple"
         android:textSize="24dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/menuRecyclerView"
-        android:layout_marginTop="8dp"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/recyclerViewMenu"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
+        android:layout_height="match_parent"
+        android:padding="8dp"/>
 </LinearLayout>
