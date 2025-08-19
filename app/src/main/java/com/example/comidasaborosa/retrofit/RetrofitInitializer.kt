@@ -1,7 +1,6 @@
 package com.example.comidasaborosa.retrofit
 
 import com.example.comidasaborosa.retrofit.service.MenuService
-import com.example.comidasaborosa.retrofit.service.NoteService
 import com.example.comidasaborosa.retrofit.service.SheetyService
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -40,7 +39,7 @@ class RetrofitInitializer {
         .client(client)
         .build()
 
-    fun noteService(): NoteService = retrofitMenu.create(NoteService::class.java)
+   /* fun noteService(): NoteService = retrofitMenu.create(NoteService::class.java)*/
     fun sheetyService(): SheetyService = retrofitSheety.create(SheetyService::class.java)
     // Adicione este método
     fun menuService(): MenuService = retrofitSheety.create(MenuService::class.java)
