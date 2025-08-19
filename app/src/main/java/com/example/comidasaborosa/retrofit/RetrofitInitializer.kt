@@ -39,8 +39,6 @@ class RetrofitInitializer {
         .client(client)
         .build()
 
-   /* fun noteService(): NoteService = retrofitMenu.create(NoteService::class.java)*/
     fun sheetyService(): SheetyService = retrofitSheety.create(SheetyService::class.java)
-    // Adicione este método
     fun menuService(): MenuService = retrofitSheety.create(MenuService::class.java)
 }
