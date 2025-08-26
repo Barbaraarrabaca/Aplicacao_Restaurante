@@ -8,7 +8,7 @@ import android.widget.EditText  // Campo de edição de texto
 import android.widget.TextView  // Componente de texto
 import android.widget.Toast  // Para mensagens temporárias
 import androidx.appcompat.app.AppCompatActivity  // Classe base para atividades
-import com.example.comidasaborosa.retrofit.RetrofitInitializer  // Inicializador Retrofit
+import com.example.comidasaborosa.retrofit.RetrofitHelper  // Inicializador Retrofit
 import com.example.comidasaborosa.retrofit.service.SheetyLoginResponse  // Modelo de resposta de login
 import com.example.comidasaborosa.retrofit.service.SheetyUserCreatedResponse  // Modelo de resposta de registo
 import com.example.comidasaborosa.retrofit.service.UserCreateRequest  // Modelo de pedido de criação de utilizador
@@ -136,7 +136,7 @@ class Registo : AppCompatActivity() {
     // Verifica se o email já está registado antes de criar novo utilizador
     private fun checkEmailAndRegister(name: String, email: String, password: String) {
         // Obtém lista de utilizadores existentes
-        val call = RetrofitInitializer().sheetyService().getAllUsers()
+        val call = RetrofitHelper.sheetyService().getAllUsers()
 
         call.enqueue(object : Callback<SheetyLoginResponse> {
             override fun onResponse(call: Call<SheetyLoginResponse>, response: Response<SheetyLoginResponse>) {
@@ -187,7 +187,7 @@ class Registo : AppCompatActivity() {
 
         Log.d("Registo", "Dados JSON: ${Gson().toJson(request)}")
 
-        val call = RetrofitInitializer().sheetyService().createUser(request)
+        val call = RetrofitHelper.sheetyService().createUser(request)
 
         call.enqueue(object : Callback<SheetyUserCreatedResponse> {
             override fun onResponse(call: Call<SheetyUserCreatedResponse>, response: Response<SheetyUserCreatedResponse>) {

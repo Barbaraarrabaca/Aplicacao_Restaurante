@@ -160,3 +160,4 @@ interface SheetyService {
     @PUT("pedidos/{id}")
     fun updatePedido(@Path("id") id: Int, @Body request: PedidoUpdateRequest): Call<SheetyPedidoResponse>
 }
+

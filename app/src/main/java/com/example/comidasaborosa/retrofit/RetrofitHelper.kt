@@ -1,19 +1,49 @@
 package com.example.comidasaborosa.retrofit
 
-// Importa a classe principal do Retrofit
+import com.example.comidasaborosa.retrofit.service.SheetyService
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-// Importa o conversor GSON para serialização
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 
 object RetrofitHelper {
     // URL base da API
     private const val BASE_URL = "https://api.sheety.co/2e0d44beddc7cf3e39dc567d307645f2/dam/"
 
-    // Método público para obter uma instância configurada do Retrofit
+    // Configuração GSON personalizada
+    private val gson: Gson = GsonBuilder().setLenient().create()
+
+    // Interceptor de logging para debugging
+    private val loggingInterceptor = HttpLoggingInterceptor().apply {
+        level = HttpLoggingInterceptor.Level.BODY
+    }
+
+    // Cliente HTTP personalizado com timeouts e logging
+    private val client = OkHttpClient.Builder()
+        .addInterceptor(loggingInterceptor)
+        .connectTimeout(30, TimeUnit.SECONDS)
+        .readTimeout(30, TimeUnit.SECONDS)
+        .build()
+
+    // Instância única do Retrofit (padrão singleton)
+    private val retrofitInstance: Retrofit by lazy {
+        Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .client(client)
+            .build()
+    }
+
+    // Método para obter a instância do Retrofit (compatibilidade)
     fun getInstance(): Retrofit {
-        return Retrofit.Builder()// Inicia o construtor do Retrofit
-            .baseUrl(BASE_URL) // Define a URL base das requisições
-            .addConverterFactory(GsonConverterFactory.create()) // Adiciona conversor GSON
-            .build() // Constrói o objeto Retrofit final
+        return retrofitInstance
+    }
+
+    // Acesso direto ao serviço Sheety (recomendado)
+    fun sheetyService(): SheetyService {
+        return retrofitInstance.create(SheetyService::class.java)
     }
 }

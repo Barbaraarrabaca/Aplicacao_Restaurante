@@ -10,7 +10,7 @@ import android.widget.EditText // Campo de texto editável para inputs
 import android.widget.TextView // Componente para exibição de texto
 import android.widget.Toast // Para mostrar mensagens temporárias ao utilizador
 import androidx.appcompat.app.AppCompatActivity  // Classe base para atividades com Action Bar
-import com.example.comidasaborosa.retrofit.RetrofitInitializer  // Inicializador da API Retrofit
+import com.example.comidasaborosa.retrofit.RetrofitHelper  // Inicializador da API Retrofit
 import com.example.comidasaborosa.retrofit.service.SheetyLoginResponse // Modelo de resposta da API
 import com.example.comidasaborosa.retrofit.service.UserResponse // Modelo de dados do utilizador
 import com.example.comidasaborosa.util.UserPreferences // Gestor de preferências locais
@@ -140,7 +140,7 @@ class Login : AppCompatActivity() {  // Herda de AppCompatActivity (compatibilid
         val sanitizedPassword = ValidationUtils.sanitizeInput(password)
 
         // Prepara a chamada à API
-        val call = RetrofitInitializer().sheetyService().getAllUsers()
+        val call = RetrofitHelper.sheetyService().getAllUsers()
 
         // Logs para depuração
         Log.d("Login", "Tentando fazer login com email: $sanitizedEmail")
