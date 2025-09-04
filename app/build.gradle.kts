@@ -4,15 +4,15 @@ plugins {
 }
 
 android {
-    namespace = "com.example.comidasaborosa"
-    compileSdk = 34
+    namespace = "pt.ipt.comidasaborosa"
+    compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.comidasaborosa"
+        applicationId = "pt.ipt.comidasaborosa"
         minSdk = 24
-        targetSdk = 33
-        versionCode = 1
-        versionName = "1.0"
+        targetSdk = 35
+        versionCode = 3
+        versionName = "3.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
